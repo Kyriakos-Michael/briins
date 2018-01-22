@@ -9,23 +9,36 @@ import PlansTab from './AppTabNavigator/PlansTab';
 import InvitersTab from './AppTabNavigator/InvitersTab';
 import EarningsTab from './AppTabNavigator/EarningsTab';
 
-
+import { Font } from 'expo';
 
 
 export default class MainScreen extends React.Component {
+   // Load Custom Fonts 
 
+    componentDidMount() {
+        Font.loadAsync({
+          'Montserrat-Regular': require('../Fonts//Montserrat-Regular.ttf'),
+        });
+      }
+
+      // Set Header Navigation icons and Logo image.
     static navigationOptions = {
         headerLeft: <Icon name="ios-person-outline" style = {{ paddingLeft: 10 }} />,
-        title: undefined,
-        headerTitle:  <Image source={require('../logo.png')} style={{ width: 120, height: 43 }}/>,
+        title: "briins",
+        //The Below Line is showing the Logo instead of the Text. 
+       //  headerTitle:  <Image source={require('../logo.png')} style={{ width: 120, height: 43 }}/>,
         headerRight: <Icon name="ios-grid-outline" style={{ paddingRight: 10 }} />
     }
+
+    // Render Method
   render() {
     return (
     <AppTabNavigator />
     );
   }
 }
+
+// Tab Navigation 
 const AppTabNavigator = TabNavigator ({
     OverviewTab: {
         screen: OverviewTab
@@ -40,7 +53,7 @@ const AppTabNavigator = TabNavigator ({
         screen: EarningsTab
     }
 }, {
-
+// Tab Navigation Settings 
 animationEnabled: true,
 swipeEnabled: true,
 tabBarPosition: "bottom",
@@ -54,12 +67,13 @@ tabBarOptions: {
 
 }
 )
-
+// Style Sheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily: 'Montserrat-Regular',
   },
 });
