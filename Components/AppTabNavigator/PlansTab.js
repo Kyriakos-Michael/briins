@@ -13,8 +13,8 @@ export default class PlansTab extends React.Component {
 
   render() {
     return (
-     <View>
-         <Text> Plans Tab </Text>
+      <View style={ styles.container }>   
+            <Text> Plans Tab </Text>
      </View>
     );
   }
@@ -23,7 +23,7 @@ export default class PlansTab extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FEF9F6',
     alignItems: 'center',
     justifyContent: 'center',
   },

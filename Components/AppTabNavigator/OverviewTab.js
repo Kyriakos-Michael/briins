@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Icon } from 'native-base';
+import { Icon, Button } from 'native-base';
 
 
 export default class OverviewTab extends React.Component {
@@ -16,6 +16,9 @@ export default class OverviewTab extends React.Component {
      <View style={ styles.container }>
          <Text> Kyriakos Michael </Text>
          <Text> My Account Overview </Text>
+         <Button rounded dark style={ styles.button } >
+            <Text>Light</Text>
+          </Button>
      </View>
     );
   }
@@ -28,4 +31,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button: {
+ 
+    backgroundColor: '#fff',
+   
+  }
 });

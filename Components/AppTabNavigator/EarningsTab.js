@@ -13,7 +13,7 @@ export default class EarningsTab extends React.Component {
 
   render() {
     return (
-     <View>
+      <View style={ styles.container }>
          <Text> Earnings Tab </Text>
      </View>
     );
@@ -23,7 +23,7 @@ export default class EarningsTab extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FEF9F6',
     alignItems: 'center',
     justifyContent: 'center',
   },
