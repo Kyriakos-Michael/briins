@@ -13,8 +13,9 @@ export default class OverviewTab extends React.Component {
 
   render() {
     return (
-     <View>
-         <Text> Overview Tab </Text>
+     <View style={ styles.container }>
+         <Text> Kyriakos Michael </Text>
+         <Text> My Account Overview </Text>
      </View>
     );
   }
@@ -23,7 +24,7 @@ export default class OverviewTab extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FEF9F6',
     alignItems: 'center',
     justifyContent: 'center',
   },

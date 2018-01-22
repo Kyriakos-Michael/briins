@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
-import { Icon } from 'native-base';
+import { Icon} from 'native-base';
 import { TabNavigator } from 'react-navigation';
 
 import OverviewTab from './AppTabNavigator/OverviewTab';
@@ -16,7 +16,8 @@ export default class MainScreen extends React.Component {
 
     static navigationOptions = {
         headerLeft: <Icon name="ios-person-outline" style = {{ paddingLeft: 10 }} />,
-        title: "briins",
+        title: undefined,
+        headerTitle:  <Image source={require('../logo.png')} style={{ width: 120, height: 43 }}/>,
         headerRight: <Icon name="ios-grid-outline" style={{ paddingRight: 10 }} />
     }
   render() {
