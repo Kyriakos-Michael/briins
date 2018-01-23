@@ -8,6 +8,7 @@ import OverviewTab from './AppTabNavigator/OverviewTab';
 import PlansTab from './AppTabNavigator/PlansTab';
 import InvitersTab from './AppTabNavigator/InvitersTab';
 import EarningsTab from './AppTabNavigator/EarningsTab';
+import ProfileScreen from './ProfileScreen';
 
 import { Font } from 'expo';
 
@@ -23,7 +24,7 @@ export default class MainScreen extends React.Component {
 
       // Set Header Navigation icons and Logo image.
     static navigationOptions = {
-        headerLeft: <Icon name="ios-person-outline" style = {{ paddingLeft: 10 }} />,
+        headerLeft: <Icon name="ios-person-outline" style = {{ paddingLeft: 10 }} />,   //   onPress={() => {navigate('ProfileScreen')}} 
         title: "briins",
         //The Below Line is showing the Logo instead of the Text. 
        //  headerTitle:  <Image source={require('../logo.png')} style={{ width: 120, height: 43 }}/>,

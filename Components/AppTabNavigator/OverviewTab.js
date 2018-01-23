@@ -14,7 +14,8 @@ export default class OverviewTab extends React.Component {
 
   render() {
     return (
-     <ChartC />
+   
+      <ChartC  />
     );
   }
 }
@@ -22,13 +23,8 @@ export default class OverviewTab extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FEF9F6',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  button: {
- 
-    backgroundColor: '#fff',
-   
   }
 });
