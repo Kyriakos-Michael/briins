@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Icon, Button } from 'native-base';
+import ChartC from '../Chart';
 
 
 export default class OverviewTab extends React.Component {
@@ -13,13 +14,7 @@ export default class OverviewTab extends React.Component {
 
   render() {
     return (
-     <View style={ styles.container }>
-         <Text> Kyriakos Michael </Text>
-         <Text> My Account Overview </Text>
-         <Button rounded dark style={ styles.button } >
-            <Text>Light</Text>
-          </Button>
-     </View>
+     <ChartC />
     );
   }
 }
