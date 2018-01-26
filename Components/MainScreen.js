@@ -64,8 +64,6 @@ tabBarOptions: {
     showLabel: false,
     showIcon: true
 }
-
-
 }
 )
 // Style Sheet
