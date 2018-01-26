@@ -14,8 +14,11 @@ export default class OverviewTab extends React.Component {
 
   render() {
     return (
-   
-      <ChartC  />
+      <View style = { styles.container}>
+
+                             {/*  <ChartC style = {styles.container}  />  */}
+        <Text>TOTAL POINTS: 300 </Text>
+     </View>
     );
   }
 }
