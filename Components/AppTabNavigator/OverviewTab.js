@@ -3,16 +3,29 @@ import { StyleSheet, Text, View } from 'react-native';
 import {Body,  Icon, Button, Container, Header, Content, Card, CardItem, Right} from 'native-base';
 import ChartC from '../Chart';
 
-
+import api from './api';
 
 export default class OverviewTab extends React.Component {
-
+  constructor () {
+    super();
+    this.state = {
+      name: " "
+    }
+  }
   static navigationOptions = {
     tabBarIcon: ({tintColor}) => ( 
       <Icon name="ios-paper" style  = {{ color: tintColor}} />
     )
   }
+  componentDidMount () {
+    api.getRovers().then((res) => {
+      this.setState ({
+        roverName: res.name
+      })
+    })
+    };
 
+    
   render() {
     return (
       <Container style = {styles.container}>
@@ -68,6 +81,8 @@ export default class OverviewTab extends React.Component {
           </Button>
       </Content>
       </Container>
+
+      <Text>  {this.state.name} </Text>
       </Container>
     );
   }
