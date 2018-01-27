@@ -1,6 +1,6 @@
 const apiGET = {
     getRovers() {
-        let url = 'http://frameplace.xyz:5000/user/find';
+        let url = 'http://frameplace.xyz:5000/get-user';
         return fetch(url)
             .then((res) => res.json());
     }
