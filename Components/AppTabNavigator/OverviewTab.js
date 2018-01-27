@@ -94,13 +94,18 @@ export default class OverviewTab extends React.Component {
         </Content>
     <Container style = {{paddingLeft: 85}}>
       <Content>
-          <Button bordered dark style = {{}}>
+          <Button  rounded bordered dark style = {{}}>
             <Text>       My Total Scoring: 100     </Text>
           </Button>
       </Content>
-      <Content>   
-      <Icon name='ios-speedometer-outline' style={{fontSize: 70, paddingLeft: 75}} />
-      </Content>
+      <Container>
+        <Content>  
+        <Button style = {{backgroundColor: 'transparent'}}onPress={() =>alert('This button will Begin Recording')}>
+<Icon  name='ios-speedometer-outline' style={{fontSize: 80, paddingLeft: 60, color: "black"}}/>  
+      <Text> Start </Text>
+        </Button> 
+       </Content>
+      </Container> 
       </Container>
       </Container>
     );
