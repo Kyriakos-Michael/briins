@@ -7,7 +7,6 @@ var data = {
     "score" : "567",
     "points" : "1123"
 };
-
 // POST REQUEST
 const api = {
     getRovers() {

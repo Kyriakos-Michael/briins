@@ -1,16 +1,27 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import {Body,  Icon, Button, Container, Header, Content, Card, CardItem, Right} from 'native-base';
+import {Body,  Icon, Button, Container, Header, Content, Card, CardItem, Right, ActionSheet} from 'native-base';
+import apiGET from './Services/apiGET';
+
+var BUTTONS = [
+  { text: "Option 0", icon: "american-football", iconColor: "#2c8ef4" },
+  { text: "Option 1", icon: "analytics", iconColor: "#f42ced" },
+  { text: "Option 2", icon: "aperture", iconColor: "#ea943b" },
+  { text: "Delete", icon: "trash", iconColor: "#fa213b" },
+  { text: "Cancel", icon: "close", iconColor: "#25de5b" }
+];
+var DESTRUCTIVE_INDEX = 3;
+var CANCEL_INDEX = 4;
+
 import ChartC from '../Chart';
 import api from './api';
-
-
 
 export default class OverviewTab extends React.Component {
   constructor () {
     super();
     this.state = {
-      name: " "
+      name: " ",
+      Points: " ",
     }
   }
   static navigationOptions = {
@@ -18,14 +29,27 @@ export default class OverviewTab extends React.Component {
       <Icon name="ios-paper" style  = {{ color: tintColor}} />
     )
   }
+
+  // POST
   componentDidMount () {
     api.getRovers()
     .then((res) => {
       this.setState ({
-       name: api.res
+       // name: api.res,
+      
       })
     })
     };
+
+ // GET 
+    componentDidMount () {
+      apiGET.getRovers().then((res) => {
+        this.setState ({
+          Points : res.points
+        })
+      })
+      }
+    
 // Render Method
   render() {
     return (
@@ -39,7 +63,7 @@ export default class OverviewTab extends React.Component {
               <Icon active name="ios-basket" />
               <Text>Points</Text>
               <Right>
-              <Text>100</Text>
+              <Text>{this.state.Points}</Text>
               </Right>
              </CardItem>
              <CardItem>
@@ -75,6 +99,9 @@ export default class OverviewTab extends React.Component {
           <Button bordered dark style = {{}}>
             <Text>       My Total Scoring: 100     </Text>
           </Button>
+      </Content>
+      <Content>   
+      <Icon name='ios-speedometer-outline' style={{fontSize: 70, paddingLeft: 75}} />
       </Content>
       </Container>
       </Container>
