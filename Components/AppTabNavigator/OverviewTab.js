@@ -24,8 +24,7 @@ export default class OverviewTab extends React.Component {
       })
     })
     };
-
-    
+// Render Method
   render() {
     return (
       <Container style = {styles.container}>
@@ -33,7 +32,6 @@ export default class OverviewTab extends React.Component {
         <Body>
       <Text style = {{fontSize: 25, color: "black"}}> Dashboard Overview </Text>
         </Body>
-        
           <Card>
             <CardItem>
               <Icon active name="ios-basket" />
@@ -42,7 +40,6 @@ export default class OverviewTab extends React.Component {
               <Text>100</Text>
               </Right>
              </CardItem>
-
              <CardItem>
               <Icon  name="ios-cash-outline" />
               <Text>Profits</Text>
@@ -50,16 +47,13 @@ export default class OverviewTab extends React.Component {
               <Text>$200</Text>
               </Right>
              </CardItem>
-
              <CardItem>
               <Icon  name="ios-bookmarks-outline" />
               <Text>Plans</Text>
               <Right>
               <Text>5 Plans</Text>
-                
               </Right>
              </CardItem>
-
              <CardItem>
               <Icon  name="ios-people" />
               <Text >Refferals</Text>
@@ -81,16 +75,20 @@ export default class OverviewTab extends React.Component {
           </Button>
       </Content>
       </Container>
-
-      <Text>  {this.state.name} </Text>
+      <Text>{this.state.name}</Text>
       </Container>
     );
+   }
   }
-  }
+
+
+
+
+
+  // Layout Styles 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-  
   }
 });

@@ -7,12 +7,11 @@ var data = {
     "score" : "567",
     "points" : "1123"
 };
-
 // POST REQUEST
 const api = {
     getRovers() {
         let url = 'http://frameplace.xyz:5000/echo';
-        return fetch('http://frameplace.xyz:5000/echo', {
+        return fetch(url, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -30,3 +29,4 @@ const api = {
     }
 } 
 export default api;
+
