@@ -5,45 +5,76 @@ import { Card, CardItem, Thumbnail,
 
 import apiGET from './AppTabNavigator/Services/apiGET';  
 
-
 export default class Plans extends React.Component {
     constructor () {
         super();
         this.state = {
-          Plans: ""
+          plans: [],
+          userPlan: " "
         }
     }
     componentDidMount () {
         apiGET.getRovers().then((res) => {
           this.setState ({
-            Plans : res.plans[0].type
+            plans : res.plans
           })
         })
-        }
+        }  
     render() {
+        let plans = [];
+        this.state.plans.forEach(function (plan) {
+            if (plan.type === "Health") {
+                plans.push(
+                    <CardItem style = {{padding: 10}}>
+                            <Left>
+                                <Thumbnail source = {require ('../assets/house.png')} />
+                                <Body>
+                                    <Text>Health</Text>
+                                    <Text>You are having a House Plan with Insurance.</Text>
+                                </Body>
+                            </Left>
+                    </CardItem>
+              )
+            }
+            else if (plan.type === "Motor") {
+                plans.push(
+            
+                    <CardItem style = {{padding: 10}}>
+                            <Left>
+                                <Thumbnail source = {require ('../assets/life.png')} />
+                                <Body>
+                                    <Text>Motor</Text>
+                                    <Text>You are having a House Plan with Insurance.</Text>
+                                </Body>
+                            </Left>
+                    </CardItem>
+              )
+            }
+            else if (plan.type === "Property") {
+                plans.push(
+            
+                    <CardItem style = {{padding: 10}}>
+                            <Left>
+                                <Thumbnail source = {require ('../assets/images.png')} />
+                                <Body>
+                                    <Text>Property</Text>
+                                    <Text>You are having a House Plan with Insurance.</Text>
+                                </Body>
+                            </Left>
+                    </CardItem>
+              )
+            }
+            else (
+                <Text>No Plants Available</Text>
+            )
+    });
     return (
-       <Card>
-        <CardItem style = {{padding: 10}}>
-                <Left>
-                    <Thumbnail source = {require ('../assets/house.png')} />
-                    <Body>
-                        <Text>{this.state.Plans}</Text>
-                        <Text>You are having a House Plan with Insurance.</Text>
-                     </Body>
-                </Left>
-        </CardItem>
-   
-<CardItem style = {{padding: 10}}>
-<Left>
-    <Thumbnail source = {require ('../assets/life.png')} />
-    <Body>
-        <Text>Life</Text>
-        <Text>You are having a Life Plan with Insurance.</Text>
-     </Body>
-</Left>
-</CardItem>
-    </Card>
-        )
+      <View>
+        <Card>
+        { plans }
+        </Card>
+      </View>
+      )
     };
 }
 const styles = StyleSheet.create({
