@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {Body,  Icon, Button, Container, Header, Content, Card, CardItem, Right} from 'native-base';
 import ChartC from '../Chart';
-
 import api from './api';
+
+
 
 export default class OverviewTab extends React.Component {
   constructor () {
@@ -18,9 +19,10 @@ export default class OverviewTab extends React.Component {
     )
   }
   componentDidMount () {
-    api.getRovers().then((res) => {
+    api.getRovers()
+    .then((res) => {
       this.setState ({
-        roverName: res.name
+       name: api.res
       })
     })
     };
@@ -75,16 +77,10 @@ export default class OverviewTab extends React.Component {
           </Button>
       </Content>
       </Container>
-      <Text>{this.state.name}</Text>
       </Container>
     );
    }
   }
-
-
-
-
-
   // Layout Styles 
 const styles = StyleSheet.create({
   container: {

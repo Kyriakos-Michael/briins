@@ -1,59 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Segment, Content } from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Segment, Content, Form, Item, Input } from 'native-base';
 
-import { SocialIcon } from 'react-native-elements'
-
-
-
-
-const checkout = () => {
-    
-}
+import { SocialIcon } from 'react-native-elements';
+import Login from '../Login';
 
 export default class EarningsTab extends React.Component {
 
   static navigationOptions = {
     tabBarIcon: ({tintColor}) => ( 
-      <Icon name="ios-pulse" style  = {{ color: tintColor}} />
+      <Icon name="ios-contact-outline" style  = {{ color: tintColor}} />
     )
   }
   render() {
     return (
-      <Container>
-        <Header hasTabs>
-          <Left>
-            <Button transparent>
-            </Button>
-          </Left>
-          <Body>
-            <Title>Profits</Title>
-          </Body>
-          <Right>
-            <Button transparent>
-            
-            </Button>
-          </Right>
-        </Header>
-        <Segment>
-          <Button first>
-            <Text>Profits</Text>
-          </Button>
-          <Button>
-            <Text>Checkout</Text>
-          </Button>
-          <Button last active>
-            <Text>Share</Text>
-          </Button>
-        </Segment>
-        <Content padder>
-          <Text>Awesome segment</Text>
-        </Content>
-      </Container>
+        <Login />
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

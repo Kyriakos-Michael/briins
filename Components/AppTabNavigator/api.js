@@ -7,6 +7,7 @@ var data = {
     "score" : "567",
     "points" : "1123"
 };
+
 // POST REQUEST
 const api = {
     getRovers() {
@@ -21,7 +22,7 @@ const api = {
         })
         .then (res => res.json())
         .then((res) => {
-         console.log(res.name);
+         console.log(data);
        })
        .catch((error) => {
            console.error(error);
