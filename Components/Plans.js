@@ -10,9 +10,7 @@ export default class Plans extends React.Component {
     render() {
         return (
        <Card>
-            <Text  style = {{fontSize: 25, color: 'black'}}>
-                 Plans 
-             </Text>
+            
         <CardItem style = {{padding: 10}}>
                 <Left>
                     <Thumbnail source = {require ('../assets/house.png')} />

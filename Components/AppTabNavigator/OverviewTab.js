@@ -18,7 +18,7 @@ export default class OverviewTab extends React.Component {
       <Container style = {styles.container}>
         <Content>
         <Body>
-      <Text style = {{fontSize: 20, color: "black"}}> Dashboard Overview </Text>
+      <Text style = {{fontSize: 25, color: "black"}}> Dashboard Overview </Text>
         </Body>
         
           <Card>
@@ -54,36 +54,28 @@ export default class OverviewTab extends React.Component {
               <Text >3 People</Text>
               </Right>
              </CardItem>
-
              <CardItem>
-             <Icon name="ios-trending-up" />
-            
               <Right>
-              <Text style = {{fontSize: 15, color: "black"}} >My Total Scoring: 100 </Text>
+              <Text style = {{fontSize: 15, color: "black"}} ></Text>
               </Right>
              </CardItem>
            </Card>
         </Content>
     <Container style = {{paddingLeft: 85}}>
       <Content>
-          <Button bordered dark>
-            <Text>             Start Recording           </Text>
+          <Button bordered dark style = {{}}>
+            <Text>       My Total Scoring: 100     </Text>
           </Button>
-         
       </Content>
       </Container>
-
       </Container>
     );
   }
   }
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-   
-
+  
   }
 });
