@@ -9,8 +9,6 @@ import AccelerometerSensor from '../Sensors/AccelerometerC';
 import GyroscopeSensor from '../Sensors/GyroscopeC';
 import MagnetometerSensor from '../Sensors/MagnetometerC';
 
-
-
 var BUTTONS = [
   { text: "Option 0", icon: "american-football", iconColor: "#2c8ef4" },
   { text: "Option 1", icon: "analytics", iconColor: "#f42ced" },
