@@ -4,6 +4,11 @@ import {Body,  Icon, Button, Container, Header, Content, Card, CardItem, Right, 
 import apiGET from './Services/apiGET';
 import apiGETRefferals from './Services/apiGETRefferals';  
 
+import { Accelerometer } from 'expo';
+import AccelerometerSensor from '../Sensors/AccelerometerC';
+import GyroscopeSensor from '../Sensors/GyroscopeC';
+import MagnetometerSensor from '../Sensors/MagnetometerC';
+
 
 
 var BUTTONS = [
@@ -26,14 +31,61 @@ export default class OverviewTab extends React.Component {
       Points: " ",
       Email: "",
       Plan: "",
-      Refferals: ""
-    }
+      Refferals: "",
+     
+    },
+    Magnet = new MagnetometerSensor;
+    Accel = new AccelerometerSensor;
+    Gyros = new GyroscopeSensor;
+    interval = {};
   }
+
   static navigationOptions = {
     tabBarIcon: ({tintColor}) => ( 
       <Icon name="ios-paper" style  = {{ color: tintColor}} />
     )
   }
+
+  // Add this to Main App.js
+  _onPost= () => {
+
+    console.log(JSON.stringify(Magnet.get_data()) +
+                                      JSON.stringify(Accel.get_data()) +
+                                      JSON.stringify(Gyros.get_data()));
+
+      fetch('http://frameplace.xyz:5000/get-score', {
+           method: 'POST',
+           headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify("accelerometer{:"+ JSON.stringify(Magnet.get_data()) + "}," +
+                       "magnitometer{:" +JSON.stringify(Accel.get_data()) + "}," +
+                       "gyrometer{:"+ JSON.stringify(Gyros.get_data()) + "}")
+
+
+  }).then(res => res.json())
+.then(res => console.log('Success:' + res))
+.catch(error => console.log('Error:' + error));
+
+}
+
+// --------------------------------
+
+_start=()=> {
+
+this.interval = setInterval( () =>{
+  this._onPost();
+  console.log("poutsa");
+},5000)
+
+}
+
+_stop=()=> {
+
+clearInterval(this.interval);
+
+}
 
   // POST
   componentDidMount () {
@@ -87,7 +139,7 @@ export default class OverviewTab extends React.Component {
              </CardItem>
              <CardItem>
               <Icon  name="ios-cash-outline" />
-              <Text>Profits</Text>
+              <Text>Current Balance</Text>
               <Right>
               <Text>$200</Text>
               </Right>
@@ -115,11 +167,11 @@ export default class OverviewTab extends React.Component {
         </Content>
    
         <View style = {{ flex: 1,flexDirection: 'row',  justifyContent: 'center', alignItems: 'center'}}>
-        <Button style = {{backgroundColor: 'transparent'}}onPress={() =>alert('This button will Begin Recording')}>
+        <Button style = {{backgroundColor: 'transparent'}}   onPress={()=>this._start()} >
 <Icon  name='ios-speedometer-outline' style={{fontSize: 80 ,color: "black"}}/>  
       <Text>Start</Text>
         </Button> 
-        <Button style = {{backgroundColor: 'transparent'}}onPress={() =>alert('This button will Stop Recording')}>
+        <Button style = {{backgroundColor: 'transparent'}}  onPress={()=>this._stop()}title ="Stop" >
 <Icon  name='ios-speedometer-outline' style={{fontSize: 80, color: "black"}}/>  
       <Text> Stop </Text>
         </Button> 
