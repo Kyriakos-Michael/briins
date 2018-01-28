@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {Body,  Icon, Button, Container, Header, Content, Card, CardItem, Right, ActionSheet} from 'native-base';
 import apiGET from './Services/apiGET';
+import apiGETRefferals from './Services/apiGETRefferals';  
+
+
+
 var BUTTONS = [
   { text: "Option 0", icon: "american-football", iconColor: "#2c8ef4" },
   { text: "Option 1", icon: "analytics", iconColor: "#f42ced" },
@@ -20,6 +24,9 @@ export default class OverviewTab extends React.Component {
     this.state = {
       name: " ",
       Points: " ",
+      Email: "",
+      Plan: "",
+      Refferals: ""
     }
   }
   static navigationOptions = {
@@ -43,10 +50,22 @@ export default class OverviewTab extends React.Component {
     componentDidMount () {
       apiGET.getRovers().then((res) => {
         this.setState ({
-          Points : res.points
+          Points : res.points,
+          Email: res.email,
+          name: res.name,
+          Plan: res.plans
         })
-      })
+      }, 
+    )
+      apiGETRefferals.getRovers().then((res) => {
+        this.setState ({
+          Refferals : res
+        })
+      },
+    )
       }
+
+    
     
 // Render Method
   render() {
@@ -55,11 +74,13 @@ export default class OverviewTab extends React.Component {
         <Content>
         <Body>
       <Text style = {{fontSize: 25, color: "black"}}> Dashboard Overview </Text>
+      <Text  style = {{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>{this.state.name}</Text>
+
         </Body>
           <Card>
             <CardItem>
               <Icon active name="ios-basket" />
-              <Text>Points</Text>
+              <Text>Total Points</Text>
               <Right>
               <Text>{this.state.Points}</Text>
               </Right>
@@ -75,14 +96,14 @@ export default class OverviewTab extends React.Component {
               <Icon  name="ios-bookmarks-outline" />
               <Text>Plans</Text>
               <Right>
-              <Text>5 Plans</Text>
+              <Text>{this.state.Plan.length}</Text>
               </Right>
              </CardItem>
              <CardItem>
               <Icon  name="ios-people" />
               <Text >Refferals</Text>
               <Right>
-              <Text >3 People</Text>
+              <Text >{this.state.Refferals.length} People</Text>
               </Right>
              </CardItem>
              <CardItem>
@@ -92,21 +113,19 @@ export default class OverviewTab extends React.Component {
              </CardItem>
            </Card>
         </Content>
-    <Container style = {{paddingLeft: 85}}>
-      <Content>
-          <Button  rounded bordered dark style = {{}}>
-            <Text>       My Total Scoring: 100     </Text>
-          </Button>
-      </Content>
-      <Container>
-        <Content>  
+   
+        <View style = {{ flex: 1,flexDirection: 'row',  justifyContent: 'center', alignItems: 'center'}}>
         <Button style = {{backgroundColor: 'transparent'}}onPress={() =>alert('This button will Begin Recording')}>
-<Icon  name='ios-speedometer-outline' style={{fontSize: 80, paddingLeft: 60, color: "black"}}/>  
-      <Text> Start </Text>
+<Icon  name='ios-speedometer-outline' style={{fontSize: 80 ,color: "black"}}/>  
+      <Text>Start</Text>
         </Button> 
-       </Content>
-      </Container> 
-      </Container>
+        <Button style = {{backgroundColor: 'transparent'}}onPress={() =>alert('This button will Stop Recording')}>
+<Icon  name='ios-speedometer-outline' style={{fontSize: 80, color: "black"}}/>  
+      <Text> Stop </Text>
+        </Button> 
+        </View>
+  
+      
       </Container>
     );
    }

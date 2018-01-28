@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Card, CardItem, Thumbnail, 
-         Body, Left, Right, Button, Icon, Content} from 'native-base';
+         Body, Left, Right, Button, Icon, Content, Container, Form, Item, Input,} from 'native-base';
 
 import apiGETRefferals from './Services/apiGETRefferals';  
 
@@ -31,6 +31,7 @@ export default class InvitersTab extends React.Component {
         }  
     render() {
         let userReferrals = [];
+      
         this.state.referrals.forEach(function (referral) {
           userReferrals.push (
             <Card>
@@ -39,10 +40,11 @@ export default class InvitersTab extends React.Component {
                                 <Thumbnail source = {require ('../../assets/man.png')} />
                                 <Body>
                                     <Text>Name:   {referral.name}</Text>
-                                    <Text>Points: {referral.value}</Text>
+                                    <Text> {referral.value} </Text>
                                     <Text>Agent:  {referral.agent}</Text>
                                 </Body>
                                 <Right>
+                                {referral.value == 'NULL' ?  <Text>Pending</Text>  : <Text>Active</Text> }
                                   <Icon name= "ios-card" />
                                 </Right>
                             </Left>
@@ -54,7 +56,32 @@ export default class InvitersTab extends React.Component {
         <Card>
         { userReferrals }
         </Card>
+        <Container>
+       <Content>
+         <Form>
+           <Body>
+           <Text style ={{fontWeight: 'bold'}} >New Referral</Text>
+           </Body>
+           <Item rounded last>
+             <Input placeholder="Name" />
+           </Item>
+           <Item rounded last>
+             <Input placeholder="Surname" />
+           </Item>
+           <Item rounded last>
+             <Input placeholder="Email" />
+           </Item>
+           <Item rounded last>
+             <Input placeholder="Mobile Phone" />
+           </Item>
+           <Button full info>
+           <Text>Register</Text>
+         </Button>
+         </Form>
+       </Content>
+     </Container>
       </Content>
+       
       )
     };
 }

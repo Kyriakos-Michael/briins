@@ -8,6 +8,7 @@ var data = {
     "points" : "1123"
 };
 // POST REQUEST
+/*
 const api = {
     getRovers() {
         let url = 'http://frameplace.xyz:5000/echo';
@@ -29,4 +30,6 @@ const api = {
     }
 } 
 export default api;
+
+*/
 
