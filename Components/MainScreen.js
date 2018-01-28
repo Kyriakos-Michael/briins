@@ -49,9 +49,6 @@ const AppTabNavigator = TabNavigator ({
     InvitersTab: {
         screen: InvitersTab
     },
-    CheckoutTab: {
-        screen: CheckoutTab
-    },
     EarningsTab: {
         screen: EarningsTab
     }

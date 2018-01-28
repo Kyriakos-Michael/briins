@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import {Body,  Icon, Button, Container, Header, Content, Card, CardItem, Right, ActionSheet} from 'native-base';
+import {Body, Label,  Item,  Icon, Button, Container, Header, Content, Card, CardItem, Right, ActionSheet} from 'native-base';
 import apiGET from './Services/apiGET';
 import apiGETRefferals from './Services/apiGETRefferals';  
 
@@ -30,6 +30,7 @@ export default class OverviewTab extends React.Component {
       Email: "",
       Plan: "",
       Refferals: "",
+      MLResult: ""
      
     },
     Magnet = new MagnetometerSensor;
@@ -47,6 +48,14 @@ export default class OverviewTab extends React.Component {
   // Add this to Main App.js
   _onPost= () => {
 
+    //JSON.stringify("accelerometer:"+ JSON.stringify(Magnet.get_data()) + "," +
+    //                     "magnitometer:" +JSON.stringify(Accel.get_data()) + "," +
+    //                     "gyroscope:"+ JSON.stringify(Gyros.get_data()) + "}")
+
+    var jsonObject = {'accelerometer':Magnet.get_data(),
+                      'magnitometer':Accel.get_data(),
+                      'gyroscope': Gyros.get_data()}
+
     console.log(JSON.stringify(Magnet.get_data()) +
                                       JSON.stringify(Accel.get_data()) +
                                       JSON.stringify(Gyros.get_data()));
@@ -57,13 +66,13 @@ export default class OverviewTab extends React.Component {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify("accelerometer{:"+ JSON.stringify(Magnet.get_data()) + "}," +
-                       "magnitometer{:" +JSON.stringify(Accel.get_data()) + "}," +
-                       "gyrometer{:"+ JSON.stringify(Gyros.get_data()) + "}")
+  body: JSON.stringify(jsonObject)
 
 
   }).then(res => res.json())
-.then(res => console.log('Success:' + res))
+.then(res => this.setState ({
+  MLResult: res
+}))
 .catch(error => console.log('Error:' + error));
 
 }
@@ -86,7 +95,7 @@ clearInterval(this.interval);
 }
 
   // POST
-  componentDidMount () {
+  /*componentDidMount () {
     api.getRovers()
     .then((res) => {
       this.setState ({
@@ -95,6 +104,7 @@ clearInterval(this.interval);
       })
     })
     };
+    */
 
  // GET 
     componentDidMount () {
@@ -156,14 +166,9 @@ clearInterval(this.interval);
               <Text >{this.state.Refferals.length} People</Text>
               </Right>
              </CardItem>
-             <CardItem>
-              <Right>
-              <Text style = {{fontSize: 15, color: "black"}} ></Text>
-              </Right>
-             </CardItem>
            </Card>
         </Content>
-   
+        <Content>
         <View style = {{ flex: 1,flexDirection: 'row',  justifyContent: 'center', alignItems: 'center'}}>
         <Button style = {{backgroundColor: 'transparent'}}   onPress={()=>this._start()} >
 <Icon  name='ios-speedometer-outline' style={{fontSize: 80 ,color: "black"}}/>  
@@ -174,8 +179,14 @@ clearInterval(this.interval);
       <Text> Stop </Text>
         </Button> 
         </View>
-  
-      
+        <CardItem>
+              <Icon active name="ios-basket" />
+              <Text>Driving Profile:</Text>
+              <Right>
+              <Text>85%</Text>
+              </Right>
+       </CardItem>
+        </Content>    
       </Container>
     );
    }

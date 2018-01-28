@@ -30,7 +30,7 @@ export default class Plans extends React.Component {
                                 <Thumbnail source = {require ('../assets/house.png')} />
                                 <Body>
                                     <Text>Health</Text>
-                                    <Text>You are having a House Plan with Insurance.</Text>
+                                    <Text>You are having a Health Plan with Insurance.</Text>
                                 </Body>
                             </Left>
                     </CardItem>
@@ -44,7 +44,7 @@ export default class Plans extends React.Component {
                                 <Thumbnail source = {require ('../assets/life.png')} />
                                 <Body>
                                     <Text>Motor</Text>
-                                    <Text>You are having a House Plan with Insurance.</Text>
+                                    <Text>You are having a Motor Plan with Insurance.</Text>
                                 </Body>
                             </Left>
                     </CardItem>
@@ -58,7 +58,7 @@ export default class Plans extends React.Component {
                                 <Thumbnail source = {require ('../assets/images.png')} />
                                 <Body>
                                     <Text>Property</Text>
-                                    <Text>You are having a House Plan with Insurance.</Text>
+                                    <Text>You are having a Property Plan with Insurance.</Text>
                                 </Body>
                             </Left>
                     </CardItem>
